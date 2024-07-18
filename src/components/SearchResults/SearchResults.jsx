@@ -3,7 +3,7 @@ import styles from "./SearchResults.module.css";
 const SearchResults = () => {
    return (
       <diva className={styles.SearchResults}>
-         {/* Add TrackList */}
+         {/* Add TrackList component */}
       </diva>
    )
 }

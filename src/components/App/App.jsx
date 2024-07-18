@@ -6,11 +6,11 @@ function App() {
 			<h1>Spotylist</h1>
 
 			<div className={styles.App}>
-				{/* Add SearchBar */}
+				{/* Add SearchBar component */}
 
 				<div className={styles["App-playlist"]}>
-					{/* Add SearchResults */}
-					{/* Add Playlist */}
+					{/* Add SearchResults component */}
+					{/* Add Playlist component */}
 				</div>
 			</div>
 		</div>

@@ -4,7 +4,7 @@ const Playlist = () => {
    return (
       <div className={styles.Playlist}>
          <input type="text" defaultValue={"New playlist"} />
-         {/* Add TrackList */}
+         {/* Add TrackList component */}
          <button className={styles["Playlist-save"]}>
             SAVE TO SPOTIFY
          </button>
