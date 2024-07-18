@@ -1,4 +1,4 @@
-import "./SearchBar.css";
+import "./SearchBar.module.css";
 
 const SearchBar = () => {
    return (

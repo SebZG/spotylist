@@ -1,4 +1,4 @@
-import "./SearchResults.css";
+import "./SearchResults.module.css";
 
 const SearchResults = () => {
    return (
