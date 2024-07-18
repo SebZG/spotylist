@@ -1,9 +1,11 @@
+import TrackList from "../TrackList/TrackList";
+
 import styles from "./SearchResults.module.css";
 
-const SearchResults = () => {
+const SearchResults = (props) => {
    return (
       <diva className={styles.SearchResults}>
-         {/* Add TrackList component */}
+         <TrackList searchResults={props.searchResults} />
       </diva>
    )
 }

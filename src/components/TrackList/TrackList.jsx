@@ -1,9 +1,13 @@
+import Track from "../Track/Track";
 import styles from "./TrackList.module.css";
 
-const TrackList = () => {
+const TrackList = (props) => {
    return (
       <div className={styles.TrackList}>
-         {/* Add map method to render track components */}
+         {props.searchResults.map((track) => (
+            <Track key={track.id} track={track} />
+         ))}
+
       </div>
    )
 }
