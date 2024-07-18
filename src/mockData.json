@@ -1,0 +1,122 @@
+[
+	{
+		"id": "1",
+		"artist": "The Beatles",
+		"name": "Hey Jude",
+		"album": "The White Album"
+	},
+	{
+		"id": "2",
+		"artist": "Queen",
+		"name": "Bohemian Rhapsody",
+		"album": "A Night at the Opera"
+	},
+	{
+		"id": "3",
+		"artist": "Led Zeppelin",
+		"name": "Stairway to Heaven",
+		"album": "Led Zeppelin IV"
+	},
+	{
+		"id": "4",
+		"artist": "Michael Jackson",
+		"name": "Billie Jean",
+		"album": "Thriller"
+	},
+	{
+		"id": "5",
+		"artist": "Pink Floyd",
+		"name": "Comfortably Numb",
+		"album": "The Wall"
+	},
+	{
+		"id": "6",
+		"artist": "David Bowie",
+		"name": "Space Oddity",
+		"album": "Space Oddity"
+	},
+	{
+		"id": "7",
+		"artist": "Nirvana",
+		"name": "Smells Like Teen Spirit",
+		"album": "Nevermind"
+	},
+	{
+		"id": "8",
+		"artist": "Radiohead",
+		"name": "Paranoid Android",
+		"album": "OK Computer"
+	},
+	{
+		"id": "9",
+		"artist": "Prince",
+		"name": "Purple Rain",
+		"album": "Purple Rain"
+	},
+	{
+		"id": "10",
+		"artist": "The Rolling Stones",
+		"name": "Paint It Black",
+		"album": "Aftermath"
+	},
+	{
+		"id": "11",
+		"artist": "Elton John",
+		"name": "Rocket Man",
+		"album": "Honky Château"
+	},
+	{
+		"id": "12",
+		"artist": "Fleetwood Mac",
+		"name": "Go Your Own Way",
+		"album": "Rumours"
+	},
+	{
+		"id": "13",
+		"artist": "Bob Dylan",
+		"name": "Like a Rolling Stone",
+		"album": "Highway 61 Revisited"
+	},
+	{
+		"id": "14",
+		"artist": "The Doors",
+		"name": "Riders on the Storm",
+		"album": "L.A. Woman"
+	},
+	{
+		"id": "15",
+		"artist": "Jimi Hendrix",
+		"name": "Purple Haze",
+		"album": "Are You Experienced"
+	},
+	{
+		"id": "16",
+		"artist": "The Beach Boys",
+		"name": "Good Vibrations",
+		"album": "Smiley Smile"
+	},
+	{
+		"id": "17",
+		"artist": "Simon & Garfunkel",
+		"name": "The Sound of Silence",
+		"album": "Sounds of Silence"
+	},
+	{
+		"id": "18",
+		"artist": "Johnny Cash",
+		"name": "Ring of Fire",
+		"album": "Ring of Fire: The Best of Johnny Cash"
+	},
+	{
+		"id": "19",
+		"artist": "Aretha Franklin",
+		"name": "Respect",
+		"album": "I Never Loved a Man the Way I Love You"
+	},
+	{
+		"id": "20",
+		"artist": "The Clash",
+		"name": "London Calling",
+		"album": "London Calling"
+	}
+]
