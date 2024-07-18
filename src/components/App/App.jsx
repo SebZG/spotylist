@@ -3,12 +3,14 @@ import { useState } from 'react';
 import mockData from '../../mockData.json';
 
 import SearchResults from '../SearchResults/SearchResults';
-
+import Playlist from '../Playlist/Playlist';
 
 import styles from './App.module.css';
 
 function App() {
 	const [searchResults, setSearchResults] = useState(mockData);
+	const [playlistName, setPlaylistName] = useState("Playlist 1");
+	const [playlistTracks, setPlaylistTracks] = useState(mockData);
 
 	return (
 		<div>
@@ -19,7 +21,7 @@ function App() {
 
 				<div className={styles["App-playlist"]}>
 					<SearchResults searchResults={searchResults} />
-					{/* Add Playlist component */}
+					<Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
 				</div>
 			</div>
 		</div>

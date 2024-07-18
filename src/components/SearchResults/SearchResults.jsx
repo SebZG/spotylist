@@ -5,7 +5,7 @@ import styles from "./SearchResults.module.css";
 const SearchResults = (props) => {
    return (
       <diva className={styles.SearchResults}>
-         <TrackList searchResults={props.searchResults} />
+         <TrackList tracks={props.searchResults} />
       </diva>
    )
 }

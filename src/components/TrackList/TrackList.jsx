@@ -4,7 +4,7 @@ import styles from "./TrackList.module.css";
 const TrackList = (props) => {
    return (
       <div className={styles.TrackList}>
-         {props.searchResults.map((track) => (
+         {props.tracks.map((track) => (
             <Track key={track.id} track={track} />
          ))}
 
