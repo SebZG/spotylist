@@ -1,4 +1,4 @@
-import "./Track.module.css";
+import styles from "./Track.module.css";
 
 const Track = () => {
    return (

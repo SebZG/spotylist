@@ -1,4 +1,4 @@
-import "./TrackList.module.css";
+import styles from "./TrackList.module.css";
 
 const TrackList = () => {
    return (

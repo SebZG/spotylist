@@ -1,8 +1,10 @@
-import "./SearchResults.module.css";
+import styles from "./SearchResults.module.css";
 
 const SearchResults = () => {
    return (
-      <div>SearchResults</div>
+      <diva className={styles.SearchResults}>
+         {/* Add TrackList */}
+      </diva>
    )
 }
 export default SearchResults;
