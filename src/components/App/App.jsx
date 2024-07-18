@@ -2,8 +2,17 @@ import './App.module.css';
 
 function App() {
 	return (
-		<div className='App'>
+		<div>
 			<h1>Spotylist</h1>
+
+			<div className='App'>
+				{/* Add SearchBar */}
+
+				<div className="App-playlist">
+					{/* Add SearchResults */}
+					{/* Add Playlist */}
+				</div>
+			</div>
 		</div>
 	);
 }
