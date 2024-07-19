@@ -4,14 +4,15 @@ import mockData from '../../mockData.json';
 
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import SearchBar from '../SearchBar/SearchBar';
+import Spotify from '../../utilities/Spotify';
 
 import styles from './App.module.css';
-import SearchBar from '../SearchBar/SearchBar';
 
 function App() {
-	const [searchResults, setSearchResults] = useState(mockData);
+	const [searchResults, setSearchResults] = useState([]);
 	const [playlistName, setPlaylistName] = useState("");
-	const [playlistTracks, setPlaylistTracks] = useState(mockData);
+	const [playlistTracks, setPlaylistTracks] = useState([]);
 
 	const addTrack = (track) => {
 		const existingTrack = playlistTracks.find((t) => t.id === track.id);
@@ -38,6 +39,7 @@ function App() {
 	}
 
 	const search = (term) => {
+		Spotify.search(term).then((results) => setSearchResults(results));
 		console.log(term);
 	}
 

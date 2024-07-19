@@ -9,7 +9,8 @@ const SearchBar = (props) => {
       setTerm(e.target.value);
    }
 
-   const search = () => {
+   const search = (e) => {
+      e.preventDefault();
       props.onSearch(term);
    }
 
@@ -19,7 +20,6 @@ const SearchBar = (props) => {
             type="text"
             placeholder="Enter a Song, Album, or Artist"
             onChange={handleTermChange}
-
          />
          <button
             className={styles.SearchButton}
@@ -30,4 +30,5 @@ const SearchBar = (props) => {
       </div>
    )
 }
+
 export default SearchBar;

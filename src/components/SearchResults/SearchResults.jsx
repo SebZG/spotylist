@@ -11,4 +11,5 @@ const SearchResults = (props) => {
       </div>
    )
 }
+
 export default SearchResults;
