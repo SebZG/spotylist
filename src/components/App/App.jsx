@@ -22,6 +22,12 @@ function App() {
 		}
 	}
 
+	const removeTrack = (track) => {
+		// const existingTrack = playlistTracks.filter((t) => t.id !== track.id);
+		setPlaylistTracks((prevTracks) =>
+			prevTracks.filter((currentTrack) => currentTrack.id !== track.id));
+	}
+
 	return (
 		<div>
 			<h1>Spotylist</h1>
@@ -30,8 +36,15 @@ function App() {
 				{/* Add SearchBar component */}
 
 				<div className={styles["App-playlist"]}>
-					<SearchResults searchResults={searchResults} onAdd={addTrack} />
-					<Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
+					<SearchResults
+						searchResults={searchResults}
+						onAdd={addTrack}
+					/>
+					<Playlist
+						playlistName={playlistName}
+						playlistTracks={playlistTracks}
+						onRemove={removeTrack}
+					/>
 				</div>
 			</div>
 		</div>

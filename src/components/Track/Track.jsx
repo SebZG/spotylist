@@ -6,10 +6,14 @@ const Track = (props) => {
       props.onAdd(props.track);
    }
 
+   const removeTrack = () => {
+      props.onRemove(props.track);
+   }
+
    const renderAction = () => {
       if (props.isRemoval) {
          return (
-            <button className={styles["Track-action"]}> - </button>
+            <button className={styles["Track-action"]} onClick={removeTrack}> - </button>
          );
       } else {
          return (
