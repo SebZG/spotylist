@@ -4,9 +4,18 @@ import styles from "./Playlist.module.css";
 
 const Playlist = (props) => {
 
+   const handleNameChange = (e) => {
+      props.onNameChange(e.target.value);
+   }
+
    return (
       <div className={styles.Playlist}>
-         <input type="text" defaultValue={"Playlist Name"} />
+         <input
+            type="text"
+            // defaultValue={"Playlist Name"}
+            placeholder="Playlist Name..."
+            onChange={handleNameChange}
+         />
          <TrackList
             tracks={props.playlistTracks}
             onRemove={props.onRemove}
