@@ -9,7 +9,7 @@ import styles from './App.module.css';
 
 function App() {
 	const [searchResults, setSearchResults] = useState(mockData);
-	const [playlistName, setPlaylistName] = useState("Playlist 1");
+	const [playlistName, setPlaylistName] = useState("");
 	const [playlistTracks, setPlaylistTracks] = useState(mockData);
 
 	const addTrack = (track) => {
@@ -32,6 +32,10 @@ function App() {
 		setPlaylistName(name);
 	}
 
+	const savePlaylist = () => {
+		const trackURIs = playlistTracks.map((track) => track.uri);
+	}
+
 	return (
 		<div>
 			<h1>Spotylist</h1>
@@ -49,6 +53,7 @@ function App() {
 						playlistTracks={playlistTracks}
 						onRemove={removeTrack}
 						onNameChange={updatePlaylistName}
+						onSave={savePlaylist}
 					/>
 				</div>
 			</div>
