@@ -6,6 +6,7 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 
 import styles from './App.module.css';
+import SearchBar from '../SearchBar/SearchBar';
 
 function App() {
 	const [searchResults, setSearchResults] = useState(mockData);
@@ -36,12 +37,16 @@ function App() {
 		const trackURIs = playlistTracks.map((track) => track.uri);
 	}
 
+	const search = (term) => {
+		console.log(term);
+	}
+
 	return (
 		<div>
 			<h1>Spotylist</h1>
 
 			<div className={styles.App}>
-				{/* Add SearchBar component */}
+				<SearchBar onSearch={search} />
 
 				<div className={styles["App-playlist"]}>
 					<SearchResults
