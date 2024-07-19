@@ -1,5 +1,5 @@
 const clientID = "711d5f90fbdb45eea80cbe96b980c05a";
-const redirectURI = "http://localhost:3000/";
+const redirectUri = "http://localhost:3000/";
 let accessToken;
 
 const Spotify = {
@@ -24,7 +24,7 @@ const Spotify = {
          return accessToken;
       } else {
          // Third check for the access token if first and second time are false
-         const redirect = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
+         const redirect = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
          window.location = redirect;
       }
    },
@@ -34,24 +34,50 @@ const Spotify = {
       return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
          method: "GET",
          headers: { Authorization: `Bearer ${accessToken}` }
-      })
-         .then(response => {
-            return response.json();
-         })
-         .then(jsonResponse => {
-            if (!jsonResponse) {
-               console.log("Response error")
-               return [];
-            } else {
-               return jsonResponse.tracks.items.map((track) => ({
-                  id: track.id,
-                  name: track.name,
-                  artist: track.artists[0].name,
-                  album: track.album.name,
-                  uri: track.uri
-               }));
-            }
+      }).then(response => response.json()
+      ).then(jsonResponse => {
+         if (!jsonResponse) {
+            console.log("Response error")
+            return [];
+         } else {
+            return jsonResponse.tracks.items.map((track) => ({
+               id: track.id,
+               name: track.name,
+               artist: track.artists[0].name,
+               album: track.album.name,
+               uri: track.uri
+            }));
+         }
+      });
+   },
+
+   savePlaylist(name, trackUris) {
+      if (!name || !trackUris.length) {
+         return
+      }
+
+      const accessToken = Spotify.getAccessToken();
+      const headers = { Authorization: `Bearer ${accessToken}` };
+      let userID;
+
+      return fetch("https://api.spotify.com/v1/me", { headers: headers }
+      ).then(response => response.json()
+      ).then(jsonResponse => {
+         userID = jsonResponse.id;
+         return fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({ name: name })
+         }).then(response => response.json()
+         ).then(jsonResponse => {
+            const playlistID = jsonResponse.id;
+            return fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`, {
+               method: "POST",
+               headers: headers,
+               body: JSON.stringify({ uris: trackUris })
+            });
          });
+      });
    }
 }
 

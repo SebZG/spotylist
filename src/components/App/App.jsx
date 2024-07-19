@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import mockData from '../../mockData.json';
+// import mockData from '../../mockData.json';
 
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
@@ -35,7 +35,11 @@ function App() {
 	}
 
 	const savePlaylist = () => {
-		const trackURIs = playlistTracks.map((track) => track.uri);
+		const trackUris = playlistTracks.map((track) => track.uri);
+		Spotify.savePlaylist(playlistName, trackUris).then(() => {
+			setPlaylistName("");
+			setPlaylistTracks([]);
+		});
 	}
 
 	const search = (term) => {
