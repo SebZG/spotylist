@@ -2,11 +2,22 @@ import styles from "./Track.module.css";
 
 const Track = (props) => {
 
-   const renderAction = () => {
-      return (
-         <button className={styles["Track-action"]}>{props.isRemoval ? "-" : "+"}</button>
-      )
+   const addTrack = () => {
+      props.onAdd(props.track);
    }
+
+   const renderAction = () => {
+      if (props.isRemoval) {
+         return (
+            <button className={styles["Track-action"]}> - </button>
+         );
+      } else {
+         return (
+            <button className={styles["Track-action"]} onClick={addTrack}> + </button>
+         );
+      }
+   }
+
 
    return (
       <div className={styles.Track}>
@@ -14,7 +25,7 @@ const Track = (props) => {
             <h3>{props.track.name}</h3>
             <p>{props.track.artist} | {props.track.album}</p>
          </div>
-         {/* <button class="Track-action"><!-- + or - will go here --></button> */}
+         {renderAction()}
       </div>
    )
 }

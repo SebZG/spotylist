@@ -12,6 +12,16 @@ function App() {
 	const [playlistName, setPlaylistName] = useState("Playlist 1");
 	const [playlistTracks, setPlaylistTracks] = useState(mockData);
 
+	const addTrack = (track) => {
+		const existingTrack = playlistTracks.find((t) => t.id === track.id);
+		// const newTrack = playlistTracks.concat(track);
+		if (existingTrack) {
+			console.log("Track already exists.");
+		} else {
+			setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+		}
+	}
+
 	return (
 		<div>
 			<h1>Spotylist</h1>
@@ -20,7 +30,7 @@ function App() {
 				{/* Add SearchBar component */}
 
 				<div className={styles["App-playlist"]}>
-					<SearchResults searchResults={searchResults} />
+					<SearchResults searchResults={searchResults} onAdd={addTrack} />
 					<Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
 				</div>
 			</div>

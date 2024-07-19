@@ -1,6 +1,7 @@
 import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
+   
    return (
       <div>
          <div className={styles.SearchBar}>
