@@ -45,6 +45,10 @@
    background: transparent;
 }
 
+.errorMessage {
+   text-align: center;
+}
+
 @media only screen and (max-width: 1020px) {
    .Playlist {
       width: 90%;

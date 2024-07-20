@@ -25,7 +25,7 @@ const Playlist = (props) => {
          </button>
          <br />
          {props.isSaving ? <Loading /> :
-            props.errorMessage ? <p>{props.errorMessage}</p> :
+            props.errorMessage ? <p className={styles.errorMessage}>{props.errorMessage}</p> :
                <br />
          }
          <br />

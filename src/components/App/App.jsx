@@ -33,26 +33,23 @@ function App() {
 	}
 
 	const updatePlaylistName = async (name) => {
-		// if (!name) {
-		// 	setErrorMessage("Please provide a Playlist name!");
-		// 	return;
-		// }
-
-		// try {
-		// 	const existingPlaylist = await Spotify.getUserPlaylists(name);
-
-		// 	if (existingPlaylist) {
-		// 		setErrorMessage("Playlist already exists!");
-		// 		return;
-		// 	}
-		// } catch (error) {
-		// 	console.log(error);
-		// }
-
 		setPlaylistName(name);
 	}
 
 	const savePlaylist = async () => {
+
+		// Check for no playlistTracks && no playlistName
+		if (!playlistTracks.length && !playlistName) {
+			setErrorMessage("Please add some tracks and a playlist name!");
+			return;
+		}
+		
+		// Check for empty playlistTracks
+		if (!playlistTracks.length) {
+			setErrorMessage("Please add some tracks!");
+			return;
+		}
+
 		// Check for empty playlistName
 		if (!playlistName) {
 			setErrorMessage("Please provide a playlist name!");
@@ -62,7 +59,6 @@ function App() {
 		// Check if playlistName already exists
 		try {
 			const playlists = await Spotify.getUserPlaylists()
-			// console.log(playlists);
 			const existingPlaylist = playlists.find((playlist) => playlist.name === playlistName);
 
 			if (existingPlaylist) {
