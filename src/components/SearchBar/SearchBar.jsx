@@ -3,20 +3,24 @@ import { useState, useEffect } from 'react';
 import styles from "./SearchBar.module.css";
 
 const SearchBar = (props) => {
-   const [term, setTerm] = useState("");
+   const [term, setTerm] = useState(localStorage.getItem("searchTerm") || "");
 
    const handleTermChange = (e) => {
       setTerm(e.target.value);
    }
 
-   const search = (e) => {
-      // e.preventDefault();
+   const search = () => {
       props.onSearch(term);
    }
 
    useEffect(() => {
       localStorage.setItem("searchTerm", term);
    }, [term]);
+
+   useEffect(() => {
+      props.onSearch(term);
+   }, [])
+
 
    return (
       <div className={styles.SearchBar}>

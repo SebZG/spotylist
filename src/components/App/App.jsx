@@ -83,9 +83,7 @@ function App() {
 	const search = (term) => {
 		Spotify.search(term).then((results) => {
 			setSearchResults(results)
-			// console.log(results);
 		});
-		console.log(term);
 	}
 
 	return (
