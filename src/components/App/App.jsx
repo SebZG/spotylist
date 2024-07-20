@@ -52,13 +52,26 @@ function App() {
 		setPlaylistName(name);
 	}
 
-	const savePlaylist = () => {
+	const savePlaylist = async () => {
+		// Check for empty playlistName
 		if (!playlistName) {
-			setErrorMessage("Please provide a Playlist name!");
+			setErrorMessage("Please provide a playlist name!");
 			return;
 		}
 
-		
+		// Check if playlistName already exists
+		try {
+			const playlists = await Spotify.getUserPlaylists()
+			// console.log(playlists);
+			const existingPlaylist = playlists.find((playlist) => playlist.name === playlistName);
+
+			if (existingPlaylist) {
+				setErrorMessage("Playlist already exists!");
+				return;
+			}
+		} catch (error) {
+			console.log(error);
+		}
 
 		setIsSaving(true);
 		const trackUris = playlistTracks.map((track) => track.uri);
