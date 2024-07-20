@@ -6,16 +6,15 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import Spotify from '../../utilities/Spotify';
-import Loading from '../Loading/Loading';
 
 import styles from './App.module.css';
-// import TrackList from '../TrackList/TrackList';
 
 function App() {
 	const [searchResults, setSearchResults] = useState([]);
 	const [playlistName, setPlaylistName] = useState("");
 	const [playlistTracks, setPlaylistTracks] = useState([]);
 	const [isSaving, setIsSaving] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const addTrack = (track) => {
 		const existingTrack = playlistTracks.find((t) => t.id === track.id);
@@ -33,11 +32,34 @@ function App() {
 			prevTracks.filter((currentTrack) => currentTrack.id !== track.id));
 	}
 
-	const updatePlaylistName = (name) => {
+	const updatePlaylistName = async (name) => {
+		// if (!name) {
+		// 	setErrorMessage("Please provide a Playlist name!");
+		// 	return;
+		// }
+
+		// try {
+		// 	const existingPlaylist = await Spotify.getUserPlaylists(name);
+
+		// 	if (existingPlaylist) {
+		// 		setErrorMessage("Playlist already exists!");
+		// 		return;
+		// 	}
+		// } catch (error) {
+		// 	console.log(error);
+		// }
+
 		setPlaylistName(name);
 	}
 
 	const savePlaylist = () => {
+		if (!playlistName) {
+			setErrorMessage("Please provide a Playlist name!");
+			return;
+		}
+
+		
+
 		setIsSaving(true);
 		const trackUris = playlistTracks.map((track) => track.uri);
 		Spotify.savePlaylist(playlistName, trackUris).then(() => {
@@ -78,6 +100,7 @@ function App() {
 						onNameChange={updatePlaylistName}
 						onSave={savePlaylist}
 						isSaving={isSaving}
+						errorMessage={errorMessage}
 					/>
 				</div>
 			</div>

@@ -60,7 +60,7 @@ const Spotify = {
    },
 
    savePlaylist(name, trackUris) {
-      if (!name || !trackUris.length) {
+      if (!name || !trackUris || !trackUris.length) {
          return
       }
 
@@ -86,6 +86,19 @@ const Spotify = {
             });
          });
       });
+   },
+
+   async getUserPlaylists(name) {
+      const accessToken = Spotify.getAccessToken();
+      // const headers = { Authorization: `Bearer ${accessToken}` };
+
+      const response = await fetch("https://api.spotify.com/v1/me/playlists", { headers: { Authorization: `Bearer ${accessToken}` } });
+      const playlists = await response.json();
+
+      const existingPlaylist = playlists.items.find((playlists) => playlists.name = name);
+
+      return existingPlaylist;
+
    }
 }
 

@@ -11,7 +11,6 @@ const Playlist = (props) => {
 
    return (
       <div className={styles.Playlist}>
-
          <input
             type="text"
             value={props.playlistName}
@@ -19,18 +18,22 @@ const Playlist = (props) => {
             placeholder="Playlist Name..."
             onChange={handleNameChange}
          />
-         <br />
-         {props.isSaving ? <Loading /> : <br />}
-         <TrackList
-            tracks={props.playlistTracks}
-            onRemove={props.onRemove}
-            isRemoval={true}
-         />
          <button
             className={styles["Playlist-save"]}
             onClick={props.onSave}>
             SAVE TO SPOTIFY
          </button>
+         <br />
+         {props.isSaving ? <Loading /> :
+            props.errorMessage ? <p>{props.errorMessage}</p> :
+               <br />
+         }
+         <br />
+         <TrackList
+            tracks={props.playlistTracks}
+            onRemove={props.onRemove}
+            isRemoval={true}
+         />
       </div>
    )
 }
