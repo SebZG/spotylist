@@ -1,5 +1,6 @@
 const clientID = "711d5f90fbdb45eea80cbe96b980c05a";
-const redirectUri = "http://localhost:3000/";
+// const redirectURL = "http://localhost:3000/";
+const redirectURL = "https://spotylist.netlify.app/";
 let accessToken;
 
 const Spotify = {
@@ -24,7 +25,7 @@ const Spotify = {
          return accessToken;
       } else {
          // Third check for the access token if first and second time are false
-         const redirect = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+         const redirect = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURL}`;
          window.location = redirect;
       }
    },
