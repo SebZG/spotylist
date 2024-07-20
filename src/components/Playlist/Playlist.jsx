@@ -11,14 +11,16 @@ const Playlist = (props) => {
 
    return (
       <div className={styles.Playlist}>
-         {props.isSaving && <Loading />}
-         <br />
+
          <input
             type="text"
+            value={props.playlistName}
             // defaultValue={"Playlist Name"}
             placeholder="Playlist Name..."
             onChange={handleNameChange}
          />
+         <br />
+         {props.isSaving ? <Loading /> : <br />}
          <TrackList
             tracks={props.playlistTracks}
             onRemove={props.onRemove}
