@@ -14,7 +14,6 @@ const Playlist = (props) => {
          <input
             type="text"
             value={props.playlistName}
-            // defaultValue={"Playlist Name"}
             placeholder="Playlist Name..."
             onChange={handleNameChange}
          />

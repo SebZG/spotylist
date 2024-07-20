@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // import mockData from '../../mockData.json';
 
@@ -11,18 +11,19 @@ import styles from './App.module.css';
 
 function App() {
 	const [searchResults, setSearchResults] = useState([]);
-	const [playlistName, setPlaylistName] = useState("");
-	const [playlistTracks, setPlaylistTracks] = useState([]);
+	const [playlistName, setPlaylistName] = useState(localStorage.getItem('playlistName') || "");
+	const [playlistTracks, setPlaylistTracks] = useState(JSON.parse(localStorage.getItem('playlistTracks')) || []);
 	const [isSaving, setIsSaving] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const addTrack = (track) => {
 		const existingTrack = playlistTracks.find((t) => t.id === track.id);
-		// const newTrack = playlistTracks.concat(track);
 		if (existingTrack) {
 			console.log("Track already exists.");
 		} else {
 			setPlaylistTracks((prevTracks) => [...prevTracks, track]);
+			// Store the playlist tracks in local storage
+			localStorage.setItem('playlistTracks', JSON.stringify(playlistTracks.concat(track)));
 		}
 	}
 
@@ -34,6 +35,8 @@ function App() {
 
 	const updatePlaylistName = async (name) => {
 		setPlaylistName(name);
+		// Store the playlist name in local storage
+		localStorage.setItem('playlistName', name);
 	}
 
 	const savePlaylist = async () => {
@@ -43,7 +46,7 @@ function App() {
 			setErrorMessage("Please add some tracks and a playlist name!");
 			return;
 		}
-		
+
 		// Check for empty playlistTracks
 		if (!playlistTracks.length) {
 			setErrorMessage("Please add some tracks!");
@@ -85,6 +88,12 @@ function App() {
 			setSearchResults(results)
 		});
 	}
+
+	// Load the playlistTracks and playlistName from local storage
+	useEffect(() => {
+		localStorage.setItem('playlistName', playlistName);
+		localStorage.setItem('playlistTracks', JSON.stringify(playlistTracks));
+	}, [playlistName, playlistTracks]);
 
 	return (
 		<div>

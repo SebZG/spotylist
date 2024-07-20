@@ -70,15 +70,15 @@ const Spotify = {
 
       const response = await fetch("https://api.spotify.com/v1/me", { headers: headers }
       );
-      const jsonResponse = await response.json();
-      userID = jsonResponse.id;
+      const jsonResponse_1 = await response.json();
+      userID = jsonResponse_1.id;
       const response_1 = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
          method: "POST",
          headers: headers,
          body: JSON.stringify({ name: name })
       });
-      const jsonResponse_1 = await response_1.json();
-      const playlistID = jsonResponse_1.id;
+      const jsonResponse_2 = await response_1.json();
+      const playlistID = jsonResponse_2.id;
       return await fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`, {
          method: "POST",
          headers: headers,
