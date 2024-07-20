@@ -84,6 +84,10 @@ function App() {
 	}
 
 	const search = (term) => {
+		if (term === "") {
+			// setErrorMessage("Please enter a search term!");
+			return;
+		};
 		Spotify.search(term).then((results) => {
 			setSearchResults(results)
 		});
@@ -100,7 +104,10 @@ function App() {
 			<h1>Spotylist</h1>
 
 			<div className={styles.App}>
-				<SearchBar onSearch={search} />
+				<SearchBar
+					onSearch={search}
+					errorMessage={errorMessage}
+				/>
 
 				<div className={styles["App-playlist"]}>
 					<SearchResults

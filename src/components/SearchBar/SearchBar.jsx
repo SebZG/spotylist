@@ -30,6 +30,7 @@ const SearchBar = (props) => {
             value={term}
             onChange={handleTermChange}
          />
+         {props.errorMessage && props.errorMessage}
          <button
             className={styles.SearchButton}
             onClick={search}
