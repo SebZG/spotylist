@@ -1,4 +1,5 @@
 import TrackList from "../TrackList/TrackList";
+import Loading from "../Loading/Loading";
 
 import styles from "./Playlist.module.css";
 
@@ -10,6 +11,8 @@ const Playlist = (props) => {
 
    return (
       <div className={styles.Playlist}>
+         {props.isSaving && <Loading />}
+         <br />
          <input
             type="text"
             // defaultValue={"Playlist Name"}

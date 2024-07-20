@@ -6,14 +6,16 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import SearchBar from '../SearchBar/SearchBar';
 import Spotify from '../../utilities/Spotify';
+import Loading from '../Loading/Loading';
 
 import styles from './App.module.css';
-import TrackList from '../TrackList/TrackList';
+// import TrackList from '../TrackList/TrackList';
 
 function App() {
 	const [searchResults, setSearchResults] = useState([]);
 	const [playlistName, setPlaylistName] = useState("");
 	const [playlistTracks, setPlaylistTracks] = useState([]);
+	const [isSaving, setIsSaving] = useState(false);
 
 	const addTrack = (track) => {
 		const existingTrack = playlistTracks.find((t) => t.id === track.id);
@@ -36,10 +38,14 @@ function App() {
 	}
 
 	const savePlaylist = () => {
+		setIsSaving(true);
 		const trackUris = playlistTracks.map((track) => track.uri);
 		Spotify.savePlaylist(playlistName, trackUris).then(() => {
-			setPlaylistName("");
-			setPlaylistTracks([]);
+			setTimeout(() => {
+				setPlaylistName("");
+				setPlaylistTracks([]);
+				setIsSaving(false);
+			}, 2000);
 		});
 	}
 
@@ -71,6 +77,7 @@ function App() {
 						onRemove={removeTrack}
 						onNameChange={updatePlaylistName}
 						onSave={savePlaylist}
+						isSaving={isSaving}
 					/>
 				</div>
 			</div>
