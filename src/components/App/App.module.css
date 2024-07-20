@@ -45,6 +45,10 @@ h2 {
 	width: 100%;
 }
 
+.subtitle {
+	text-align: center;
+}
+
 @media only screen and (max-width: 1020px) {
 	.App-playlist {
 		align-items: center;

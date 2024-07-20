@@ -100,8 +100,10 @@ function App() {
 	}, [playlistName, playlistTracks]);
 
 	return (
-		<div>
+		<>
 			<h1>Spotylist</h1>
+
+			<h2 className={styles.subtitle}>Search and save your favorite songs to Spotify!</h2>
 
 			<div className={styles.App}>
 				<SearchBar
@@ -127,7 +129,7 @@ function App() {
 					/>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
