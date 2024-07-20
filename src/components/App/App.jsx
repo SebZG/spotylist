@@ -8,6 +8,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import Spotify from '../../utilities/Spotify';
 
 import styles from './App.module.css';
+import TrackList from '../TrackList/TrackList';
 
 function App() {
 	const [searchResults, setSearchResults] = useState([]);
@@ -59,7 +60,9 @@ function App() {
 
 				<div className={styles["App-playlist"]}>
 					<SearchResults
-						searchResults={searchResults}
+						tracks={searchResults.filter((track) =>
+							!playlistTracks.some((playlistTracks) => playlistTracks.id === track.id))}
+						// searchResults={searchResults}
 						onAdd={addTrack}
 					/>
 					<Playlist
